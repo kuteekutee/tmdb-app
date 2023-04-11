@@ -26,7 +26,7 @@ export const TopRatedTV = () => {
 
   return (
     <>
-      <Cards list={topRatedTV} />
+      <Cards list={topRatedTV} contentType="tv" />
     </>
   );
 };

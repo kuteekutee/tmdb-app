@@ -26,7 +26,7 @@ export const TopRatedMovies = () => {
 
   return (
     <>
-      <Cards list={topRatedMovies} title="Top Rated" />
+      <Cards list={topRatedMovies} contentType="movie" />
     </>
   );
 };

@@ -5,9 +5,11 @@ const APP_TITLE = "The Movie Database";
 function Layout({ children }) {
   return (
     <>
-      <Header appTitle={APP_TITLE} />
-      <div className="layoutContainer">{children}</div>
-      <Footer />
+      <div className="flex-wrapper">
+        <Header appTitle={APP_TITLE} />
+        <div className="layoutContainer">{children}</div>
+        <Footer />
+      </div>
     </>
   );
 }
