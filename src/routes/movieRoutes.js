@@ -1,5 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Flex, Home, About, TopRatedMovies, TopRatedTV } from "../pages";
+import {
+  TvDetails,
+  MovieDetails,
+  Home,
+  About,
+  Search,
+  TopRatedMovies,
+  TopRatedTV,
+} from "../pages";
 
 export const MovieRoutes = () => {
   return (
@@ -9,7 +17,9 @@ export const MovieRoutes = () => {
           <Route path="/top-rated-movies" element={<TopRatedMovies />} />
           <Route path="/top-rated-tv" element={<TopRatedTV />} />
           <Route path="/about" element={<About />} />
-          <Route path="/flex" element={<Flex />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/tv/:id" element={<TvDetails />} />
         </Route>
       </Routes>
     </>

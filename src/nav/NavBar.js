@@ -23,8 +23,8 @@ export const NavBar = () => (
         <NavLink to="/about" className="button is-info is-outlined">
           About
         </NavLink>
-        <NavLink to="/flex" className="button is-info is-outlined">
-          Flex
+        <NavLink to="/search" className="button is-info is-outlined">
+          Search Movies
         </NavLink>
       </div>
     </div>
