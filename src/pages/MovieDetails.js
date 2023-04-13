@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import ViewSimilar from "./ViewSimilar.js"
 import axios from "axios";
 // import Logo from "../assets/images/logo.png";
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
@@ -61,8 +61,11 @@ export const MovieDetails = () => {
           ) : (
             ""
           )}
+          
+           </div>
+           <div><ViewSimilar movieId={params.id} /></div>
         </div>
-      </div>
+        
     </>
   );
 };
