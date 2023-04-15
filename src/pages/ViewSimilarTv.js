@@ -7,7 +7,7 @@ const apiImage = `https://image.tmdb.org/t/p/w400/`;
 const baseURL = "https://api.themoviedb.org/3";
 const apiKey = "ee1966b7f6d002de644810b7fd884a69";
 
-const SimilarMovieWrapper = styled.div`
+const SimilarTvWrapper = styled.div`
   display: flex;
   overflow-x: auto;
   gap: 20px;
@@ -16,7 +16,7 @@ const SimilarMovieWrapper = styled.div`
  
 `;
 
-const SimilarMovieItem = styled.div`
+const SimilarTvItem = styled.div`
   flex-shrink: 0;
   width: 150px;
   height: 600 px;
@@ -36,42 +36,42 @@ const SimilarMovieItem = styled.div`
 `;
 
 
-const ViewSimilar = ({ movieId }) => {
-  const [similarMovie, setSimilarMovie] = useState([]);
+const ViewSimilarTv = ({ tvId }) => {
+  const [similarTv, setSimilarTv] = useState([]);
 
   useEffect(() => {
-    const getSimilarMovie = async () => {
+    const getSimilarTv = async () => {
       try {
         const response = await axios.get(
-          `${baseURL}/movie/${movieId}/similar?api_key=${apiKey}`
+          `${baseURL}/tv/${tvId}/similar?api_key=${apiKey}`
         );
-        setSimilarMovie(response.data.results);
+        setSimilarTv(response.data.results);
       } catch (error) {
-        console.log("Error fetching similar movies", error);
+        console.log("Error fetching similar tv shows", error);
       }
     };
-    getSimilarMovie();
-  }, [movieId]);
+    getSimilarTv();
+  }, [tvId]);
 
   return (
-    <div className="similar-movies-container">
-      <h2>Similar Movies</h2>
-      <SimilarMovieWrapper>
-        {similarMovie.map((movie) => (
-          <Link key={movie.id} to={`/movie/${movie.id}`}>
-            <SimilarMovieItem>
+    <div className="similar-tv-container">
+      <h2>Similar Tv Shows</h2>
+      <SimilarTvWrapper>
+        {similarTv.map((tv) => (
+          <Link key={tv.id} to={`/tv/${tv.id}`}>
+            <SimilarTvItem>
               <img
-                src={`${apiImage}${movie.poster_path}`}
+                src={`${apiImage}${tv.poster_path}`}
                 alt=""
-                className="similar-movie-poster"
+                className="similar-tv-poster"
               />
-              <p className="similar-movie-title">{movie.title}</p>
-            </SimilarMovieItem>
+              <p className="similar-tv-title">{tv.title}</p>
+            </SimilarTvItem>
           </Link>
         ))}
-      </SimilarMovieWrapper>
+      </SimilarTvWrapper>
     </div>
   );
 };
 
-export default ViewSimilar;
+export default ViewSimilarTv;

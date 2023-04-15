@@ -1,4 +1,3 @@
-//import "bulma/css/bulma.min.css";
 import axios from "axios";
 import { useState } from "react";
 import { Cards } from "../components/Cards";
@@ -16,8 +15,11 @@ export const Search = () => {
 
       console.log("Get STATUS: ", response.status);
       const data = response.data.results;
-      console.log(JSON.stringify(data));
-      setSearchData(data);
+      const filteredData = data.filter(
+        (item) => !(item.poster_path === null || item.overview === "")
+      );
+      // console.log(JSON.stringify(filteredData));
+      setSearchData(filteredData);
     } catch (error) {
       console.log("Data error", error);
     }
@@ -31,47 +33,40 @@ export const Search = () => {
 
     getApi();
   };
+
   return (
     <>
-      <div className="container">
-        <section className="hero is-small">
-          <div className="hero-body">
-            <div className="columns is-centered">
-              <div className="column">
-                <nav className="level">
-                  <div className="level-item">
-                    <form>
-                      <div className="field has-addons">
-                        <p className="control">
-                          <input
-                            className="input"
-                            type="text"
-                            name="search"
-                            value={queryText}
-                            onChange={handleChange}
-                            placeholder="Find a post"
-                          />
-                        </p>
-                        <p className="control">
-                          <button
-                            className="button"
-                            name="buttonSearch"
-                            onClick={handleSearch}
-                          >
-                            Search
-                          </button>
-                        </p>
-                      </div>
-                    </form>
-                  </div>
-                </nav>
+      <div className="container is-align-items-flex-end">
+        <nav className="level">
+          <div className="level-item">
+            <form>
+              <div className="field has-addons">
+                <p className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    name="search"
+                    value={queryText}
+                    onChange={handleChange}
+                    placeholder="Find a movie"
+                  />
+                </p>
+                <p className="control">
+                  <button
+                    className="button is-info"
+                    name="buttonSearch"
+                    onClick={handleSearch}
+                  >
+                    Search
+                  </button>
+                </p>
               </div>
-            </div>
+            </form>
           </div>
-          {searchData.length > 0 && (
-            <Cards list={searchData} contentType="movie" />
-          )}
-        </section>
+        </nav>
+        {searchData.length > 0 ? (
+          <Cards list={searchData} contentType="movie" />
+        ) : null}
       </div>
     </>
   );
