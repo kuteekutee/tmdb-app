@@ -13,7 +13,6 @@ const SimilarMovieWrapper = styled.div`
   gap: 20px;
   max-width: calc(150px * 7);
   overflow-y: hidden;
- 
 `;
 
 const SimilarMovieItem = styled.div`
@@ -35,8 +34,7 @@ const SimilarMovieItem = styled.div`
   }
 `;
 
-
-const ViewSimilar = ({ movieId }) => {
+export const ViewSimilar = ({ movieId }) => {
   const [similarMovie, setSimilarMovie] = useState([]);
 
   useEffect(() => {
@@ -73,5 +71,3 @@ const ViewSimilar = ({ movieId }) => {
     </div>
   );
 };
-
-export default ViewSimilar;

@@ -13,7 +13,6 @@ const SimilarTvWrapper = styled.div`
   gap: 20px;
   max-width: calc(150px * 7);
   overflow-y: hidden;
- 
 `;
 
 const SimilarTvItem = styled.div`
@@ -35,8 +34,7 @@ const SimilarTvItem = styled.div`
   }
 `;
 
-
-const ViewSimilarTv = ({ tvId }) => {
+export const ViewSimilarTv = ({ tvId }) => {
   const [similarTv, setSimilarTv] = useState([]);
 
   useEffect(() => {
@@ -73,5 +71,3 @@ const ViewSimilarTv = ({ tvId }) => {
     </div>
   );
 };
-
-export default ViewSimilarTv;
