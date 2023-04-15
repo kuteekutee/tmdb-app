@@ -1,43 +1,57 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { Link } from "react-router-dom";
-// import noImage from "../assets/images/no-image.jpg";
+import { useFavourites } from "../contexts/FavouritesContext";
 
 const apiImage = `https://image.tmdb.org/t/p/w500/`;
 export const Cards = ({ list, contentType }) => {
+  const { addToFavourites } = useFavourites();
   return (
     <>
-      <section className="section is-paddingless">
+      <section className="section">
         <div className="container">
           <div className="columns is-multiline">
             {list.map((item) => (
               <div key={item.id} className="column is-one-third">
-                <article className="media notification has-background-white">
+                <article className="media">
                   <div className="media-content">
-                    <div className="content">
+                    <div className="notification is-link is-light">
                       <figure className="image">
                         <img
                           className="is-rounded"
                           src={`${apiImage}${item.poster_path}`}
+                          alt={item.id}
                         />
                       </figure>
-                      <p>
+                      <div className="is-link has-text-centered">
                         <Link
+                          style={{ textDecoration: "none" }}
                           to={
                             contentType === "movie"
                               ? `/movie/${item.id}`
                               : `/tv/${item.id}`
                           }
                         >
-                          <h1 className="title is-size-5">
+                          <div className="p-4 is-size-6">
                             {contentType === "movie" ? item.title : item.name}
-                          </h1>
+                          </div>
                         </Link>
-                      </p>
-                      <p className="subtitle is-size-6">
-                        {contentType === "movie"
-                          ? item.release_date
-                          : item.first_air_date}
-                      </p>
+                      </div>
+                      <div className="columns">
+                        <div className="column px-0">
+                          <p className="is-size-7 mt-0 has-text-centered px-1 mt-1">
+                            {contentType === "movie"
+                              ? item.release_date
+                              : item.first_air_date}
+                          </p>
+                        </div>
+                        <div className="column px-0">
+                          <button
+                            onClick={() => addToFavourites(item.id)}
+                            className="button is-small is-link px-2 is-rounded"
+                          >
+                            Add to Favourites
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </article>

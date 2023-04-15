@@ -41,7 +41,7 @@ export const TopRatedTV = () => {
       <div className="container mt-4">
         <div className="columns is-vcentered is-centered">
           <div className="column">
-            <span onClick={() => getPrev()} class="button" name="prev">
+            <span onClick={() => getPrev()} className="button" name="prev">
               Previous
             </span>
           </div>
@@ -51,7 +51,7 @@ export const TopRatedTV = () => {
             </span>
           </div>
           <div className="column">
-            <span onClick={() => getNext()} class="button" name="next">
+            <span onClick={() => getNext()} className="button" name="next">
               Next
             </span>
           </div>

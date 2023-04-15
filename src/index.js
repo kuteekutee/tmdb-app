@@ -5,11 +5,14 @@ import "bulma/css/bulma.min.css";
 import "./index.css";
 import App from "./App";
 import AutoScrollTop from "./components/AutoScrollTop";
+import { FavouritesProvider } from "./contexts/FavouritesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
-    <AutoScrollTop />
-    <App />
+    <FavouritesProvider>
+      <AutoScrollTop />
+      <App />
+    </FavouritesProvider>
   </Router>
 );
