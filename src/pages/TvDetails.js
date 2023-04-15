@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import ViewSimilarTv from "./ViewSimilarTv";
 import axios from "axios";
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
 
@@ -72,6 +72,7 @@ export const TvDetails = () => {
             </p>
           </div>
         </div>
+        <div><ViewSimilarTv tvId={params.id} /></div>
       </div>
     </>
   );

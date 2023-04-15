@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import ViewSimilar from "./ViewSimilar";
 import axios from "axios";
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
 const formatter = new Intl.NumberFormat("en-US", {
@@ -81,6 +81,7 @@ export const MovieDetails = () => {
             </p>
           </div>
         </div>
+        <div><ViewSimilar movieId={params.id} /></div>
       </div>
     </>
   );
