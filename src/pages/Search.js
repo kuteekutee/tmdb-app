@@ -36,7 +36,7 @@ export const Search = () => {
 
   return (
     <>
-      <div className="container is-align-items-flex-end">
+      <div className="container mt-4 is-align-items-flex-end">
         <nav className="level">
           <div className="level-item">
             <form>

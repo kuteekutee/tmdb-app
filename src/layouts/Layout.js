@@ -1,5 +1,6 @@
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+
 const APP_TITLE = "The Movie Database";
 function Layout({ children }) {
   return (

@@ -21,7 +21,7 @@ export const MovieDetails = () => {
 
         console.log("Get STATUS: ", response.status);
         const data = response.data;
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         setMovieDetails(data);
       } catch (error) {
         console.log("Data error", error);
@@ -48,37 +48,35 @@ export const MovieDetails = () => {
           <div className="column">
             <p className="bd-notification">
               <div className="content is-5">
-                <div className="content is-5">
-                  <h1 className="title">{movieDetails.title}</h1>
-                  <p>{movieDetails.overview}</p>
-                  <p>Released: {movieDetails.release_date}</p>
-                  <p>Runtime: {movieDetails.runtime} mins</p>
-                  {movieDetails.revenue > 0 && (
-                    <p>Revenue: {formatter.format(movieDetails.revenue)}</p>
+                <h1 className="title">{movieDetails.title}</h1>
+                <p>{movieDetails.overview}</p>
+                <p>Released: {movieDetails.release_date}</p>
+                <p>Runtime: {movieDetails.runtime} mins</p>
+                {movieDetails.revenue > 0 && (
+                  <p>Revenue: {formatter.format(movieDetails.revenue)}</p>
+                )}
+                <p>
+                  <a
+                    href={movieDetails.homepage}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {movieDetails.homepage}
+                  </a>
+                </p>
+                <p>
+                  {movieDetails.genres ? (
+                    <div className="tags are-medium">
+                      {movieDetails.genres.map((genre, index) => (
+                        <span className="tag is-info" key={genre.id}>
+                          {genre.name}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    ""
                   )}
-                  <p>
-                    <a
-                      href={movieDetails.homepage}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {movieDetails.homepage}
-                    </a>
-                  </p>
-                  <p>
-                    {movieDetails.genres ? (
-                      <div class="tags are-medium">
-                        {movieDetails.genres.map((genre, index) => (
-                          <span className="tag is-info" key={genre.id}>
-                            {genre.name}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </p>
-                </div>
+                </p>
               </div>
             </p>
           </div>

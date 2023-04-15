@@ -7,6 +7,7 @@ import {
   Search,
   TopRatedMovies,
   TopRatedTV,
+  Favourites,
 } from "../pages";
 
 export const MovieRoutes = () => {
@@ -20,6 +21,7 @@ export const MovieRoutes = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/tv/:id" element={<TvDetails />} />
+          <Route path="/favourites" element={<Favourites />} />
         </Route>
       </Routes>
     </>
