@@ -19,7 +19,7 @@ export const TopRatedMovies = () => {
         setTotalPages(response.data.total_pages);
         const data = response.data.results;
         //console.log(JSON.stringify(data));
-        console.log("page", page);
+        //console.log("page", page);
         setTopRatedMovies(data);
       } catch (error) {
         console.log("Data error", error);
@@ -42,7 +42,7 @@ export const TopRatedMovies = () => {
       <div className="container mt-4">
         <div className="columns is-vcentered is-centered">
           <div className="column">
-            <span onClick={() => getPrev()} class="button" name="prev">
+            <span onClick={() => getPrev()} className="button" name="prev">
               Previous
             </span>
           </div>
@@ -52,7 +52,7 @@ export const TopRatedMovies = () => {
             </span>
           </div>
           <div className="column">
-            <span onClick={() => getNext()} class="button" name="next">
+            <span onClick={() => getNext()} className="button" name="next">
               Next
             </span>
           </div>
