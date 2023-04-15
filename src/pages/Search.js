@@ -36,6 +36,8 @@ export const Search = () => {
 
   return (
     <>
+      {" "}
+      <h2 className="title">Search Movies!</h2>
       <div className="container mt-4 is-align-items-flex-end">
         <nav className="level">
           <div className="level-item">

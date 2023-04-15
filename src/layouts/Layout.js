@@ -1,19 +1,19 @@
 import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
+//import { Header } from "../components/Header";
+import MyNavbar from "../nav/NavBar";
 
-const APP_TITLE = "The Movie Database";
+// const APP_TITLE = "The Movie Database";
 function Layout({ children }) {
   return (
     <>
       <div className="container is-fullheight">
         <div className="columns is-multiline">
           <div className="column is-full  is-paddingless">
-            <Header appTitle={APP_TITLE} />
+            {/* <Header appTitle={APP_TITLE} /> */}
           </div>
-          <div className="column is-full is-paddingless">
+          <MyNavbar />
+          <div className="column is-full mt-6">
             <div className="row">{children}</div>
-          </div>
-          <div className="column is-full is-paddingless">
             <Footer />
           </div>
         </div>

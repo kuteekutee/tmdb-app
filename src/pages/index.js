@@ -6,3 +6,4 @@ export { Search } from "./Search";
 export { TopRatedMovies } from "./TopRatedMovies";
 export { TopRatedTV } from "./TopRatedTV";
 export { Favourites } from "./Favourites";
+export { UsersList } from "./UsersList";

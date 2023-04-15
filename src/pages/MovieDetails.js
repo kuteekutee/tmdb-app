@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { UsersProvider } from "../contexts/UsersContext";
 import ViewSimilar from "./ViewSimilar";
 import axios from "axios";
+
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
+
 export const MovieDetails = () => {
   const params = useParams();
   const [movieDetails, setMovieDetails] = useState({});
@@ -81,7 +84,9 @@ export const MovieDetails = () => {
             </p>
           </div>
         </div>
-        <div><ViewSimilar movieId={params.id} /></div>
+        <div>
+          <ViewSimilar movieId={params.id} />
+        </div>
       </div>
     </>
   );
