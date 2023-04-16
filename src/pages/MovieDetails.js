@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { UsersProvider } from "../contexts/UsersContext";
-import ViewSimilar from "./ViewSimilar";
-import { ViewSimilar } from "./index";
+import { ViewSimilar } from "./ViewSimilar";
+import { ViewSimilarTv } from "./index";
 import axios from "axios";
 
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
