@@ -8,6 +8,7 @@ import {
   TopRatedMovies,
   TopRatedTV,
   Favourites,
+  UsersList,
 } from "../pages";
 
 export const MovieRoutes = () => {
@@ -22,6 +23,7 @@ export const MovieRoutes = () => {
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/tv/:id" element={<TvDetails />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/login" element={<UsersList />} />
         </Route>
       </Routes>
     </>

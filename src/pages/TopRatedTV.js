@@ -38,6 +38,7 @@ export const TopRatedTV = () => {
   }
   return (
     <>
+      <h2 className="title">Top Rated TV</h2>
       <div className="container mt-4">
         <div className="columns is-vcentered is-centered">
           <div className="column">

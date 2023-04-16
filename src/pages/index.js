@@ -8,3 +8,4 @@ export { TopRatedTV } from "./TopRatedTV";
 export { Favourites } from "./Favourites";
 export { ViewSimilar } from "./ViewSimilar";
 export { ViewSimilarTv } from "./ViewSimilarTv";
+export { UsersList } from "./UsersList";

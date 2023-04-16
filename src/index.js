@@ -6,13 +6,16 @@ import "./index.css";
 import App from "./App";
 import AutoScrollTop from "./components/AutoScrollTop";
 import { FavouritesProvider } from "./contexts/FavouritesContext";
+import { UsersProvider } from "./contexts/UsersContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Router>
-    <FavouritesProvider>
-      <AutoScrollTop />
-      <App />
-    </FavouritesProvider>
-  </Router>
+  <UsersProvider>
+    <Router>
+      <FavouritesProvider>
+        <AutoScrollTop />
+        <App />
+      </FavouritesProvider>
+    </Router>
+  </UsersProvider>
 );
