@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { useFavourites } from "../contexts/FavouritesContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const apiImage = `https://image.tmdb.org/t/p/w500/`;
 export const Cards = ({ list, contentType }) => {
-  const { addToFavourites } = useFavourites();
+  const { isSignedIn } = useAuth();
+  const { addToFavourites, favouritesList, removeFromFavourites } =
+    useFavourites();
+
   return (
     <>
       <section className="section">
@@ -13,10 +17,10 @@ export const Cards = ({ list, contentType }) => {
               <div key={item.id} className="column is-one-third">
                 <article className="media">
                   <div className="media-content">
-                    <div className="notification is-link is-light">
-                      <figure className="image">
+                    <div className="notification is-light is-white is-rounded">
+                      <figure className="image pl-4">
                         <img
-                          className="is-rounded"
+                          className="is-square"
                           src={`${apiImage}${item.poster_path}`}
                           alt={item.id}
                         />
@@ -35,22 +39,36 @@ export const Cards = ({ list, contentType }) => {
                           </div>
                         </Link>
                       </div>
-                      <div className="columns">
-                        <div className="column px-0">
+                      <div className="columns has-text-centered">
+                        <div className="column">
                           <p className="is-size-7 mt-0 has-text-centered px-1 mt-1">
                             {contentType === "movie"
                               ? item.release_date
                               : item.first_air_date}
                           </p>
                         </div>
-                        <div className="column px-0">
-                          <button
-                            onClick={() => addToFavourites(item.id)}
-                            className="button is-small is-link px-2 is-rounded"
-                          >
-                            Add to Favourites
-                          </button>
-                        </div>
+
+                        {isSignedIn && (
+                          <div className="column">
+                            {!favouritesList.find(
+                              (fav) => fav.id === item.id
+                            ) ? (
+                              <span
+                                className="tag is-success is-small"
+                                onClick={() => addToFavourites(item)}
+                              >
+                                Favourites +
+                              </span>
+                            ) : (
+                              <span
+                                className="tag is-danger is-small"
+                                onClick={() => removeFromFavourites(item)}
+                              >
+                                Remove -
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

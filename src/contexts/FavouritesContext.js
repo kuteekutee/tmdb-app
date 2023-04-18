@@ -1,43 +1,73 @@
 import { createContext, useContext, useReducer } from "react";
 import { favouritesReducer } from "../reducers/favouritesReducer";
+// import { useAuth } from "./AuthContext";
 
 const initialState = {
-  favouritesList: [],
-  // favouritesList: [238, 278, 240, 389, 497, 680, 13],
+  favouritesList: [{}],
 };
 
 const FavouritesContext = createContext(initialState);
 
 export const FavouritesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(favouritesReducer, initialState);
+  // const { authUser } = useAuth();
 
-  const addToFavourites = (movieId) => {
-    const updatedFavouritesList = state.favouritesList.concat(movieId);
-    console.log(updatedFavouritesList);
+  const addToFavourites = (fav) => {
+    const updatedFavouritesList = state.favouritesList.concat(fav);
     dispatch({
       type: "ADD_TO_FAVOURITES",
       payload: {
-        movies: updatedFavouritesList,
+        favourites: updatedFavouritesList,
       },
     });
   };
+  // const addToFavourites = (movieId) => {
+  //   const updatedFavouritesList = state.favouritesList.concat(movieId);
+  //   dispatch({
+  //     type: "ADD_TO_FAVOURITES",
+  //     payload: {
+  //       user: authUser,
+  //       movies: updatedFavouritesList,
+  //     },
+  //   });
+  // };
 
-  const removeFromFavourites = (movieId) => {
-    const updatedFavouritesList = state.favouriteList.filter(
-      (item) => item.id !== movieId
+  const removeFromFavourites = (fav) => {
+    const updatedFavouritesList = state.favouritesList.filter(
+      (item) => item.id !== fav.id
     );
     dispatch({
       type: "REMOVE_FROM_FAVOURITES",
       payload: {
-        movies: updatedFavouritesList,
+        favourites: updatedFavouritesList,
       },
     });
+    // if (!authUser) {
+    //   localStorage.setItem(
+    //     // currUser["email"],
+    //     authUser,
+    //     JSON.stringify(state.favouritesList)
+    //   );
+    // }
   };
+
+  // const loadFromLocalStorage = (user) => {
+  //   const storedFavourites = JSON.parse(localStorage.getItem("bernard"));
+  //   console.log("in loadFromStorage", storedFavourites);
+  //   if (!storedFavourites) return [];
+  //   dispatch({
+  //     type: "GET_STORE_FAVOURITES",
+  //     payload: {
+  //       storedFavourites: storedFavourites,
+  //     },
+  //   });
+  // };
 
   const value = {
     favouritesList: state.favouritesList,
     addToFavourites,
     removeFromFavourites,
+    // loadFromLocalStorage,
   };
 
   return (

@@ -17,7 +17,7 @@ export const TvDetails = () => {
         const response = await axios.get(api);
         console.log("Get STATUS: ", response.status);
         const data = response.data;
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         setTvDetails(data);
       } catch (error) {
         console.log("Data error", error);
@@ -28,24 +28,29 @@ export const TvDetails = () => {
 
   return (
     <>
-      <div className="section">
-        <div className="columns is-vcentered">
-          <div className="column is-3">
-            <p className="bd-notification">
+      <div className="container  px-4 py-0">
+        <h2 className="title ml-2">Details</h2>
+        <div className="columns is-vcentered is-centered">
+          <div className="column is-4">
+            <div className="bd-notification">
               <figure className="image">
                 <img
-                  className="is-rounded"
-                  src={`${apiImage}${tvDetails.poster_path}`}
+                  className="is-square mx-2"
+                  src={
+                    tvDetails.poster_path === undefined
+                      ? ""
+                      : `${apiImage}${tvDetails.poster_path}`
+                  }
                   alt=""
                   style={{ maxWidth: "256px" }}
                 />
               </figure>
-            </p>
+            </div>
           </div>
           <div className="column">
-            <p className="bd-notification">
-              <div className="content is-5">
-                <h1>{tvDetails.name}</h1>
+            <div className="bd-notification">
+              <div className="content is-6">
+                <div className="title">{tvDetails.name}</div>
                 <p>{tvDetails.overview}</p>
                 <p>First Aired on {tvDetails.first_air_date}</p>
                 <p>
@@ -54,7 +59,7 @@ export const TvDetails = () => {
                 </p>
                 <p>
                   {tvDetails.genres ? (
-                    <div class="tags are-medium">
+                    <div className="tags are-medium">
                       {tvDetails.genres.map((genre, index) => (
                         <span className="tag is-info" key={genre.id}>
                           {genre.name}
@@ -65,11 +70,8 @@ export const TvDetails = () => {
                     ""
                   )}
                 </p>
-                {/* {tvDetails.genres.map((item) => (
-                  <p>{item.name}</p>
-                ))} */}
               </div>
-            </p>
+            </div>
           </div>
         </div>
         <div>

@@ -1,6 +1,5 @@
-import { MovieRoutes } from "./routes/movieRoutes";
+import { MovieRoutes } from "./routes/MovieRoutes";
 import Layout from "./layouts/Layout";
-import "./App.css";
 function App() {
   return (
     <>

@@ -43,7 +43,10 @@ export const ViewSimilarTv = ({ tvId }) => {
         const response = await axios.get(
           `${baseURL}/tv/${tvId}/similar?api_key=${apiKey}`
         );
-        setSimilarTv(response.data.results);
+        const filteredData = response.data.results.filter(
+          (item) => !(item.poster_path === null || item.overview === "")
+        );
+        setSimilarTv(filteredData);
       } catch (error) {
         console.log("Error fetching similar tv shows", error);
       }

@@ -1,21 +1,19 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import "bulma/css/bulma.min.css";
-import "./index.css";
 import App from "./App";
 import AutoScrollTop from "./components/AutoScrollTop";
 import { FavouritesProvider } from "./contexts/FavouritesContext";
-import { UsersProvider } from "./contexts/UsersContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <UsersProvider>
-    <Router>
-      <FavouritesProvider>
+  <AuthProvider>
+    <FavouritesProvider>
+      <Router>
         <AutoScrollTop />
         <App />
-      </FavouritesProvider>
-    </Router>
-  </UsersProvider>
+      </Router>
+    </FavouritesProvider>
+  </AuthProvider>
 );

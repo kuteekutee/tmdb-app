@@ -1,98 +1,125 @@
-import { NavLink } from "react-router-dom";
-import React, { useContext, useState } from "react";
-import { Navbar, Container } from "react-bulma-components";
-import myImage from "../assets/images/myImage.jpg";
-import "bulma/css/bulma.min.css";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import "./NavBar.scss";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.jpg";
 import { useFavourites } from "../contexts/FavouritesContext";
-import UsersContext from "../contexts/UsersContext";
-import "./NavBar.css";
+// import { useCurrentUserContext } from "../contexts/CurrentUserContext";
+import { useAuth } from "../contexts/AuthContext";
 
-const MyNavbar = () => {
+const Navbar = () => {
   const [isActive, setisActive] = useState(false);
-  const { favouritesList } = useFavourites();
-  const { currentUser, isLoggedin } = useContext(UsersContext);
 
-  console.log("currentUser", currentUser);
+  let { favouritesList } = useFavourites();
+
+  const { isSignedIn, authUser, setAuthUser, setIsSignedIn } = useAuth();
+
+  const handleSignout = (e) => {
+    e.preventDefault();
+    setIsSignedIn(false);
+    setAuthUser(null);
+  };
 
   return (
     <>
-      <Navbar color="primary" fixed="top" active={isActive}>
-        <Container>
-          <Navbar.Brand>
-            <Navbar.Item renderAs="div">
-              <NavLink to="/" exact>
-                <img
-                  src={myImage}
-                  alt="Your Movie Database"
-                  style={{ marginRight: 15 }}
-                />
-              </NavLink>
-            </Navbar.Item>
-            <Navbar.Burger
-              onClick={() => setisActive(!isActive)}
-              className={isActive ? "is-active" : ""}
+      <nav
+        className="navbar has-shadow"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <Link to="/" className="navbar-item">
+            <img
+              src={logo}
+              alt="Logo"
+              style={{ maxHeight: 70 }}
+              className="py-2 px-2"
             />
-          </Navbar.Brand>
-          <Navbar.Menu>
-            <Navbar.Container>
-              <Navbar.Item renderAs="div">
-                <NavLink to="/top-rated-movies" activeClassName="is-active">
-                  Top Rated Movies
-                </NavLink>
-              </Navbar.Item>
-              <Navbar.Item renderAs="div">
-                <NavLink to="/top-rated-tv" activeClassName="is-active">
-                  Top Rated TV Shows
-                </NavLink>
-              </Navbar.Item>
-              <Navbar.Item renderAs="div">
-                <NavLink to="/best-movies" activeClassName="is-active">
-                  Best Movies
-                </NavLink>
-              </Navbar.Item>
-              <Navbar.Item renderAs="div">
-                <NavLink to="/search" activeClassName="is-active">
-                  Search Movies
-                </NavLink>
-              </Navbar.Item>
-              <Navbar.Item renderAs="div">
-                <NavLink to="/favourites" activeClassName="is-active">
-                  Favourite Movies{" "}
-                  <div
-                    style={{
-                      display: "inline-block",
-                      width: "20px",
-                      height: "20px",
-                      borderRadius: "50%",
-                      backgroundColor: "black",
-                      color: "white",
-                      textAlign: "center",
-                      lineHeight: "20px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    {favouritesList.length}
-                  </div>
-                </NavLink>
-              </Navbar.Item>
+            {process.env.REACT_APP_TITLE}
+          </Link>
 
-              <Navbar.Item renderAs="div">
-                <NavLink to="/about" activeClassName="is-active">
-                  About
-                </NavLink>
-              </Navbar.Item>
-              <Navbar.Item renderAs="div">
-                <NavLink to="/login" activeClassName="is-active">
-                  {isLoggedin ? "Logout" : "Login"}
-                  {/* {isLoggedin ? `Welcome back! ${currentUser}` : "Please Login"} */}
-                </NavLink>
-              </Navbar.Item>
-            </Navbar.Container>
-          </Navbar.Menu>
-        </Container>
-      </Navbar>
+          <Link
+            onClick={() => {
+              setisActive(!isActive);
+            }}
+            role="button"
+            className={"navbar-burger burger"}
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarToggleActive"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </Link>
+        </div>
+        <div
+          id="navbarToggleActive"
+          className={`navbar-menu ${isActive ? "is-active" : ""}`}
+        >
+          <div className="navbar-start">
+            <div className="navbar-item">
+              <Link to="/trending" className="navbar-item">
+                Trending
+              </Link>
+              <Link to="/top-rated-movies" className="navbar-item">
+                Movies
+              </Link>
+              <Link to="/top-rated-tv" className="navbar-item">
+                TV Shows
+              </Link>
+            </div>
+            <Link to="/search" className="navbar-item">
+              Search
+            </Link>
+          </div>
+          <div className="navbar-end">
+            {/* <div className="navbar-item">
+              <Link to="/" className="navbar-item">
+                Home
+              </Link> */}
+            {isSignedIn && (
+              <div className="navbar-item">
+                <Link to="/favourites" className="navbar-item">
+                  Favourites
+                </Link>
+                <div
+                  style={{
+                    display: "inline-block",
+                    width: "25px",
+                    height: "25px",
+                    borderRadius: "50%",
+                    backgroundColor: "green",
+                    color: "white",
+                    textAlign: "center",
+                    lineHeight: "25px",
+                    marginRight: "10px",
+                  }}
+                >
+                  {favouritesList ? favouritesList.length : 0}
+                </div>
+              </div>
+            )}
+            <div className="navbar-item">
+              {!isSignedIn ? (
+                <Link to="/sign-in">Sign In</Link>
+              ) : (
+                // <Link to="/sign-out">
+                <div>
+                  <div>Welcome, {authUser}</div>
+                  <button className="button is-ghost" onClick={handleSignout}>
+                    Sign out
+                  </button>
+                </div>
+                // </Link>
+              )}
+            </div>
+            {/* </div> */}
+          </div>
+        </div>
+      </nav>
     </>
   );
 };
 
-export default MyNavbar;
+export default Navbar;

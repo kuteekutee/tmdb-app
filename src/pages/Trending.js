@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Cards } from "../components/Cards";
-
-export const TopRatedMovies = () => {
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
+import { TrendList } from "../components/TrendList";
+export const Trending = () => {
+  const [trending, setTrending] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const baseURL = "https://api.themoviedb.org/3";
@@ -12,16 +11,19 @@ export const TopRatedMovies = () => {
 
   useEffect(() => {
     const getApi = async () => {
-      let api = `${baseURL}/movie/top_rated?api_key=${apiKey}&page=${page}`;
+      let api = `${baseURL}/trending/all/day?api_key=${apiKey}&page=${page}`;
       try {
         const response = await axios.get(api);
 
         console.log("Get STATUS: ", response.status);
         setTotalPages(response.data.total_pages);
         const data = response.data.results;
+        const filteredData = data.filter(
+          (item) => !(item.poster_path === null || item.overview === "")
+        );
         //console.log(JSON.stringify(data));
         //console.log("page", page);
-        setTopRatedMovies(data);
+        setTrending(filteredData);
       } catch (error) {
         console.log("Data error", error);
       }
@@ -40,8 +42,8 @@ export const TopRatedMovies = () => {
   }
   return (
     <>
-      <div className="container mt-4 is-paddingless">
-        <h2 className="title ml-6">Top Rated Movies</h2>
+      <div className="container mt-4">
+        <h2 className="title ml-6">Trending All Day</h2>
         <div className="columns is-vcentered is-centered">
           <div className="column">
             <span onClick={() => getPrev()} className="button" name="prev">
@@ -61,7 +63,7 @@ export const TopRatedMovies = () => {
         </div>
       </div>
 
-      <Cards list={topRatedMovies} contentType="movie" />
+      <TrendList list={trending} />
     </>
   );
 };

@@ -1,17 +1,14 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/anchor-has-content */
 import { useFavourites } from "../contexts/FavouritesContext";
 import { FetchMovie } from "../components/FetchMovie";
 
 export const Favourites = () => {
-  const ctx = useFavourites();
-  console.log(ctx.favouritesList);
+  const { favouritesList } = useFavourites();
   return (
     <>
-      <div className="section">
-        <h2 className="title">Favourites</h2>
-        {ctx.favouritesList.map((item) => (
-          <FetchMovie id={item} key={item} />
+      <p className="title ml-6">Favourites</p>
+      <div className="container is-paddingless is-marginless">
+        {favouritesList.map((item) => (
+          <FetchMovie fav={item} key={item.id} />
         ))}
       </div>
     </>

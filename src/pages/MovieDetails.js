@@ -1,8 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { UsersProvider } from "../contexts/UsersContext";
 import { ViewSimilar } from "./ViewSimilar";
-import { ViewSimilarTv } from "./index";
 import axios from "axios";
 
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
@@ -35,19 +33,24 @@ export const MovieDetails = () => {
   }, [api]);
   return (
     <>
-      <div className="section is-marginless">
+      <div className="section px-4 py-0">
+        <h2 className="title ml-2">Details</h2>
         <div className="columns is-vcentered">
           <div className="column is-3">
-            <p className="bd-notification">
+            <div className="bd-notification">
               <figure className="image">
                 <img
-                  className="is-rounded"
-                  src={`${apiImage}${movieDetails.poster_path}`}
+                  className="is-square"
+                  src={
+                    movieDetails.poster_path === undefined
+                      ? ""
+                      : `${apiImage}${movieDetails.poster_path}`
+                  }
                   alt=""
                   style={{ maxWidth: "256px" }}
                 />
               </figure>
-            </p>
+            </div>
           </div>
           <div className="column">
             <p className="bd-notification">

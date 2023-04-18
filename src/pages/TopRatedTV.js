@@ -38,8 +38,8 @@ export const TopRatedTV = () => {
   }
   return (
     <>
-      <h2 className="title">Top Rated TV</h2>
       <div className="container mt-4">
+        <h2 className="title ml-6">Top Rated TV</h2>
         <div className="columns is-vcentered is-centered">
           <div className="column">
             <span onClick={() => getPrev()} className="button" name="prev">
@@ -48,7 +48,7 @@ export const TopRatedTV = () => {
           </div>
           <div className="column">
             <span>
-              {page}/{totalPages}
+              {page} | {totalPages}
             </span>
           </div>
           <div className="column">
