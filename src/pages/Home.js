@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export const Home = () => {
   const listItems = [
     "/vkLzXddgUKH5VcpnYiRzpJFrZhz.jpg",
@@ -49,9 +50,9 @@ export const Home = () => {
             <p>Enjoy!</p>
             <br />
             <p className="has-text-centered">
-              <a href="/all/trending" className="button is-medium is-ghost">
+              <Link to="/all/trending" className="button is-medium is-ghost">
                 See what is trending?
-              </a>
+              </Link>
             </p>
           </div>
         </div>
