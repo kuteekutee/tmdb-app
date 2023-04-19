@@ -41,7 +41,7 @@ export const MovieRoutes = () => {
           <Route path="search" element={<Dashboard />}>
             <Route index element={<Search />} />
             <Route path="movie/:id" element={<MovieDetails />} />
-            <Route path="tv/:id" element={<MovieDetails />} />
+            <Route path="tv/:id" element={<TvDetails />} />
           </Route>
           <Route path="favourites" element={<Favourites />} />
           <Route path="sign-in" element={<SignIn />} />
