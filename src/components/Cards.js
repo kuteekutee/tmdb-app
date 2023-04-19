@@ -30,8 +30,8 @@ export const Cards = ({ list, contentType }) => {
                           style={{ textDecoration: "none" }}
                           to={
                             contentType === "movie"
-                              ? `/movie/${item.id}`
-                              : `/tv/${item.id}`
+                              ? `movie/${item.id}`
+                              : `tv/${item.id}`
                           }
                         >
                           <div className="p-4 is-size-6">

@@ -1,23 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./NavBar.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.jpg";
 import { useFavourites } from "../contexts/FavouritesContext";
-// import { useCurrentUserContext } from "../contexts/CurrentUserContext";
 import { useAuth } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const [isActive, setisActive] = useState(false);
-
   let { favouritesList } = useFavourites();
-
   const { isSignedIn, authUser, setAuthUser, setIsSignedIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleSignout = (e) => {
     e.preventDefault();
     setIsSignedIn(false);
     setAuthUser(null);
+    navigate("/all/trending", { replaced: true });
   };
 
   return (
@@ -32,7 +31,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Logo"
-              style={{ maxHeight: 70 }}
+              style={{ maxHeight: 80 }}
               className="py-2 px-2"
             />
             {process.env.REACT_APP_TITLE}
@@ -59,28 +58,24 @@ const Navbar = () => {
         >
           <div className="navbar-start">
             <div className="navbar-item">
-              <Link to="/trending" className="navbar-item">
+              <Link to="/all/trending" className="navbar-item">
                 Trending
               </Link>
-              <Link to="/top-rated-movies" className="navbar-item">
+              <Link to="/all/movies" className="navbar-item">
                 Movies
               </Link>
-              <Link to="/top-rated-tv" className="navbar-item">
+              <Link to="/all/tv-shows" className="navbar-item">
                 TV Shows
               </Link>
             </div>
-            <Link to="/search" className="navbar-item">
+            <Link to="/all/search" className="navbar-item">
               Search
             </Link>
           </div>
           <div className="navbar-end">
-            {/* <div className="navbar-item">
-              <Link to="/" className="navbar-item">
-                Home
-              </Link> */}
             {isSignedIn && (
               <div className="navbar-item">
-                <Link to="/favourites" className="navbar-item">
+                <Link to="/all/favourites" className="navbar-item">
                   Favourites
                 </Link>
                 <div
@@ -102,11 +97,10 @@ const Navbar = () => {
             )}
             <div className="navbar-item">
               {!isSignedIn ? (
-                <Link to="/sign-in">Sign In</Link>
+                <Link to="/all/sign-in">Sign In</Link>
               ) : (
-                // <Link to="/sign-out">
                 <div>
-                  <div>Welcome, {authUser}</div>
+                  <div>Hello, {authUser}</div>
                   <button className="button is-ghost" onClick={handleSignout}>
                     Sign out
                   </button>

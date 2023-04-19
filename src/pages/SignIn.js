@@ -1,12 +1,9 @@
 import { useState } from "react";
-// import api from "../mockapi/api";
-// import { useCurrentUserContext } from "../contexts/CurrentUserContext";
 import { useAuth } from "../contexts/AuthContext";
-// import { useFavourites } from "../contexts/FavouritesContext";
+import { useFavourites } from "../contexts/FavouritesContext";
 import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
-  //const { setCurrentUser } = useCurrentUserContext();
   const { setIsSignedIn, setAuthUser } = useAuth();
 
   const [formData, setFormData] = useState({
@@ -16,7 +13,7 @@ export const SignIn = () => {
   });
 
   const { isSubmitting, username, password } = formData;
-  // const { loadFromLocalStorage } = useFavourites();
+  const { loadFromLocalStorage } = useFavourites();
   const navigate = useNavigate();
 
   const handleError = (error) => {
@@ -33,41 +30,12 @@ export const SignIn = () => {
       setFormData({ ...formData, isSubmitting: true });
       setAuthUser(formData.username);
       setIsSignedIn(true);
-
-      // const params = {
-      //   user: {
-      //     username,
-      //     password,
-      //   },
-      // };
-      // api
-      //   .post("users", params)
-      //   .then(async (response) => {
-      //     const { user, id } = response.data;
-      //     console.log("user", user);
-
-      //     if (user) {
-      //       localStorage.setItem("user_token", id);
-      //       loadFromLocalStorage("bernard");
-      //       setCurrentUser(user);
-      //       navigate("/trending");
-      //     } else {
-      //       handleError("An error occurred");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     handleError("An error occurred");
-      //     console.error("Sign In error", error);
-      //     setFormData({
-      //       ...formData,
-      //       isSubmitting: false,
-      //     });
-      //   });
+      loadFromLocalStorage();
     } else {
       handleError("Please fill out all fields");
       setFormData({ ...formData });
     }
-    navigate("/trending");
+    navigate("/all/trending");
   };
 
   const isValid = username && password;

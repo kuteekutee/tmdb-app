@@ -26,7 +26,9 @@ export const TrendCard = ({ item }) => {
               <Link
                 style={{ textDecoration: "none" }}
                 to={
-                  mediaType === "movie" ? `/movie/${item.id}` : `/tv/${item.id}`
+                  mediaType === "movie"
+                    ? `/all/movies/movie/${item.id}`
+                    : `all/tv-shows/tv/${item.id}`
                 }
               >
                 <div className="p-4 is-size-6">

@@ -59,7 +59,7 @@ export const ViewSimilarTv = ({ tvId }) => {
       <h2>Similar Tv Shows</h2>
       <SimilarTvWrapper>
         {similarTv.map((tv) => (
-          <Link key={tv.id} to={`/tv/${tv.id}`}>
+          <Link key={tv.id} to={`/all/tv-shows/tv/${tv.id}`}>
             <SimilarTvItem>
               <img
                 src={`${apiImage}${tv.poster_path}`}

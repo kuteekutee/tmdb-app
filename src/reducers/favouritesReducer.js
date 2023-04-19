@@ -3,16 +3,11 @@ export const favouritesReducer = (state, action) => {
 
   switch (type) {
     case "ADD_TO_FAVOURITES": {
-      // localStorage.setItem(
-      //   // currUser["email"],
-      //   "berrnard",
-      //   JSON.stringify(payload.movies)
-      // );
-
       return { ...state, favouritesList: payload.favourites };
     }
-
     case "REMOVE_FROM_FAVOURITES":
+      return { ...state, favouritesList: payload.favourites };
+    case "REMOVE_ALL_FROM_FAVOURITES":
       return { ...state, favouritesList: payload.favourites };
 
     case "GET_STORE_FAVOURITES":

@@ -11,6 +11,7 @@ const formatter = new Intl.NumberFormat("en-US", {
 
 export const MovieDetails = () => {
   const params = useParams();
+  console.log(params);
   const [movieDetails, setMovieDetails] = useState({});
   const baseURL = "https://api.themoviedb.org/3";
   const apiKey = "ee1966b7f6d002de644810b7fd884a69";

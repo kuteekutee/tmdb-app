@@ -59,7 +59,7 @@ export const ViewSimilar = ({ movieId }) => {
       <h2>Similar Movies</h2>
       <SimilarMovieWrapper>
         {similarMovie.map((movie) => (
-          <Link key={movie.id} to={`/movie/${movie.id}`}>
+          <Link key={movie.id} to={`/all/movies/movie/${movie.id}`}>
             <SimilarMovieItem>
               <img
                 src={`${apiImage}${movie.poster_path}`}
