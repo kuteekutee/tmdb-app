@@ -28,7 +28,7 @@ export const TrendCard = ({ item }) => {
                 to={
                   mediaType === "movie"
                     ? `/all/movies/movie/${item.id}`
-                    : `all/tv-shows/tv/${item.id}`
+                    : `/all/tv-shows/tv/${item.id}`
                 }
               >
                 <div className="p-4 is-size-6">
