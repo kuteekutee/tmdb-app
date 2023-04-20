@@ -28,11 +28,11 @@ export const TvDetails = () => {
 
   return (
     <>
-      <div className="container  px-4 py-0">
+      <div className="section  px-4 py-0">
         <div className="tag is-medium has-text-weight-bold">
           TV show details ...
         </div>
-        <div className="columns is-vcentered is-centered">
+        <div className="columns is-vcentered">
           <div className="column is-2">
             <div className="bd-notification">
               <figure className="image">
