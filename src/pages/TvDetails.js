@@ -33,7 +33,7 @@ export const TvDetails = () => {
           TV show details ...
         </div>
         <div className="columns is-vcentered is-centered">
-          <div className="column is-3">
+          <div className="column is-2">
             <div className="bd-notification">
               <figure className="image">
                 <img

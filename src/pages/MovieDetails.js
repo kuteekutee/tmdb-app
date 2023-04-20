@@ -39,7 +39,7 @@ export const MovieDetails = () => {
           Movie details ...
         </div>
         <div className="columns is-vcentered">
-          <div className="column is-3">
+          <div className="column is-2">
             <div className="bd-notification">
               <figure className="image">
                 <img
