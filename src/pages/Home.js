@@ -24,13 +24,13 @@ export const Home = () => {
   return (
     <>
       <div className="container is-fullheight has-text-centered">
-        <div className="columns is-vcentered">
+        <div className="columns is-vcentered is-centered">
           <div className="column">
             <figure className="image">
               <img src={image} alt="Description" />
             </figure>
           </div>
-          <div className="column">
+          <div className="column mx-4">
             <h1 className="title is-4">
               Welcome to {process.env.REACT_APP_TITLE}
             </h1>
