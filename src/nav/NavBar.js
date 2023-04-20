@@ -99,11 +99,17 @@ const Navbar = () => {
               {!isSignedIn ? (
                 <Link to="/all/sign-in">Sign In</Link>
               ) : (
-                <div>
-                  <div>Hello, {authUser}</div>
-                  <button className="button is-ghost" onClick={handleSignout}>
-                    Sign out
-                  </button>
+                <div className="columns is-vcentered is-gapless">
+                  <div className="column">
+                    <div className="tag is-small is-warning">
+                      Hello, {authUser}
+                    </div>
+                  </div>
+                  <div className="column">
+                    <button className="button is-ghost" onClick={handleSignout}>
+                      Sign out
+                    </button>
+                  </div>
                 </div>
                 // </Link>
               )}

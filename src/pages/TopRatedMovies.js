@@ -40,7 +40,7 @@ export const TopRatedMovies = () => {
   }
   return (
     <>
-      <div className="container mt-4 is-paddingless">
+      <div className="container is-paddingless">
         <h2 className="title ml-6">Top Rated Movies</h2>
         <div className="columns is-vcentered is-centered is-mobile">
           <div className="column is-narrow">

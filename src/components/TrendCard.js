@@ -13,9 +13,9 @@ export const TrendCard = ({ item }) => {
     <div key={item.id} className="column is-one-third">
       <article className="media">
         <div className="media-content">
-          <div className="notification is-light is-white is-rounded">
+          <div className="notification is-light is-white">
             <figure className="image pl-4">
-              <div>{mediaType}</div>
+              <div className="tag is-small is-warning ">{mediaType}</div>
               <img
                 className="is-square"
                 src={`${apiImage}${item.poster_path}`}

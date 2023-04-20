@@ -29,13 +29,15 @@ export const TvDetails = () => {
   return (
     <>
       <div className="container  px-4 py-0">
-        <h2 className="title ml-2">Details</h2>
+        <div className="tag is-medium has-text-weight-bold">
+          TV show details ...
+        </div>
         <div className="columns is-vcentered is-centered">
-          <div className="column is-4">
+          <div className="column is-3">
             <div className="bd-notification">
               <figure className="image">
                 <img
-                  className="is-square mx-2"
+                  className="is-square"
                   src={
                     tvDetails.poster_path === undefined
                       ? ""

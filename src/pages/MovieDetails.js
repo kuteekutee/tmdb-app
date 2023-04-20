@@ -35,7 +35,9 @@ export const MovieDetails = () => {
   return (
     <>
       <div className="section px-4 py-0">
-        <h2 className="title ml-2">Details</h2>
+        <div className="tag is-medium has-text-weight-bold">
+          Movie details ...
+        </div>
         <div className="columns is-vcentered">
           <div className="column is-3">
             <div className="bd-notification">

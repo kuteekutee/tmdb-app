@@ -42,7 +42,7 @@ export const Trending = () => {
   }
   return (
     <>
-      <div className="container mt-4">
+      <div className="container">
         <h2 className="title ml-6">Trending All Day</h2>
         <div className="columns is-vcentered is-centered is-mobile">
           <div className="column is-narrow">
