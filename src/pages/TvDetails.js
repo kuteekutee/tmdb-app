@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ViewSimilarTv } from "./ViewSimilarTv";
 import axios from "axios";
+import StarRating from "../components/StarRating";
 const apiImage = `https://image.tmdb.org/t/p/w500/`;
 
 export const TvDetails = () => {
@@ -33,7 +34,7 @@ export const TvDetails = () => {
           TV show details ...
         </div>
         <div className="columns is-vcentered">
-          <div className="column is-2">
+          <div className="column is-one-third">
             <div className="bd-notification">
               <figure className="image">
                 <img
@@ -55,10 +56,14 @@ export const TvDetails = () => {
                 <div className="title">{tvDetails.name}</div>
                 <p>{tvDetails.overview}</p>
                 <p>First Aired on {tvDetails.first_air_date}</p>
-                <p>
-                  {tvDetails.vote_average} average of {tvDetails.vote_count}{" "}
-                  votes
-                </p>
+                <div className="mb-5">
+                  {/* {tvDetails.vote_average} average of {tvDetails.vote_count}{" "} */}
+                  {/* votes */}
+                  <StarRating
+                    rating={tvDetails.vote_average}
+                    votes={tvDetails.vote_count}
+                  />
+                </div>
                 <p>
                   {tvDetails.genres ? (
                     <div className="tags are-medium">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ViewSimilar } from "./ViewSimilar";
+import StarRating from "../components/StarRating";
 import axios from "axios";
 
 const apiImage = `https://image.tmdb.org/t/p/w400/`;
@@ -39,7 +40,7 @@ export const MovieDetails = () => {
           Movie details ...
         </div>
         <div className="columns is-vcentered">
-          <div className="column is-2">
+          <div className="column is-one-third">
             <div className="bd-notification">
               <figure className="image">
                 <img
@@ -74,6 +75,14 @@ export const MovieDetails = () => {
                     {movieDetails.homepage}
                   </a>
                 </p>
+                <div className="mb-5">
+                  {/* {movieDetails.vote_average} average of{" "}
+                  {movieDetails.vote_count} votes */}
+                  <StarRating
+                    rating={movieDetails.vote_average}
+                    votes={movieDetails.vote_count}
+                  />
+                </div>
                 <p>
                   {movieDetails.genres ? (
                     <div className="tags are-medium">
