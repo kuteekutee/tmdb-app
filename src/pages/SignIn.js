@@ -12,7 +12,7 @@ export const SignIn = () => {
     password: "",
   });
 
-  const { isSubmitting, username, password } = formData;
+  const { username, password } = formData;
   const { loadFromLocalStorage } = useFavourites();
   const navigate = useNavigate();
 
@@ -20,7 +20,6 @@ export const SignIn = () => {
     alert(error);
     setFormData({
       ...formData,
-      isSubmitting: false,
     });
   };
   const handleSignIn = (e) => {
@@ -41,7 +40,7 @@ export const SignIn = () => {
   const isValid = username && password;
   return (
     <>
-      <div className="container">
+      <div className="container has-text-centered box">
         <form onSubmit={handleSignIn}>
           <div className="field">
             <p className="control has-icons-left has-icons-right">
@@ -82,12 +81,8 @@ export const SignIn = () => {
           </div>
           <div className="field">
             <p className="control">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="button is-success"
-              >
-                {isSubmitting ? "Submitting..." : "Signing In"}
+              <button type="submit" className="button is-success">
+                Sign In
               </button>
             </p>
           </div>

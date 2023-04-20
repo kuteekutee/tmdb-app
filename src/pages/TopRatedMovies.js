@@ -43,19 +43,27 @@ export const TopRatedMovies = () => {
       <div className="container mt-4 is-paddingless">
         <h2 className="title ml-6">Top Rated Movies</h2>
         <div className="columns is-vcentered is-centered is-mobile">
-          <div className="column">
-            <span onClick={() => getPrev()} className="button" name="prev">
-              Previous
+          <div className="column is-narrow">
+            <span
+              onClick={() => getPrev()}
+              className="button is-small"
+              name="prev"
+            >
+              {"<<"}
             </span>
           </div>
-          <div className="column">
-            <span>
+          <div className="column is-narrow">
+            <span className="box tag">
               {page} | {totalPages}
             </span>
           </div>
-          <div className="column">
-            <span onClick={() => getNext()} className="button" name="next">
-              Next
+          <div className="column is-narrow">
+            <span
+              onClick={() => getNext()}
+              className="button is-small"
+              name="next"
+            >
+              {">>"}
             </span>
           </div>
         </div>

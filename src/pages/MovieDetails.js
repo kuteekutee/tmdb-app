@@ -76,7 +76,7 @@ export const MovieDetails = () => {
                   {movieDetails.genres ? (
                     <div className="tags are-medium">
                       {movieDetails.genres.map((genre, index) => (
-                        <span className="tag is-info" key={genre.id}>
+                        <span className="tag is-warning" key={genre.id}>
                           {genre.name}
                         </span>
                       ))}
