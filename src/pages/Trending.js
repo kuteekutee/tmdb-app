@@ -44,7 +44,7 @@ export const Trending = () => {
     <>
       <div className="container mt-4">
         <h2 className="title ml-6">Trending All Day</h2>
-        <div className="columns is-vcentered is-centered">
+        <div className="columns is-vcentered is-centered is-mobile">
           <div className="column">
             <span onClick={() => getPrev()} className="button" name="prev">
               Previous

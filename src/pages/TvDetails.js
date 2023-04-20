@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ViewSimilarTv } from "./ViewSimilarTv";
 import axios from "axios";
-const apiImage = `https://image.tmdb.org/t/p/w400/`;
+const apiImage = `https://image.tmdb.org/t/p/w500/`;
 
 export const TvDetails = () => {
   const params = useParams();

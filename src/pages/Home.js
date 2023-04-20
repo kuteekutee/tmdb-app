@@ -34,24 +34,28 @@ export const Home = () => {
             <h1 className="title is-4">
               Welcome to {process.env.REACT_APP_TITLE}
             </h1>
-            <h2 className="subtitle is-6">A mockapi using TMDB's api</h2>
+            <h2 className="subtitle is-6">
+              We are happy to announce that we have just released v0.1 of this
+              application using TMDB's api. Still in beta phase, we would like
+              to gather feedback from our viewers.
+            </h2>
             <br />
             <p>
-              We hope this simple site demonstrates the power of comsuming
-              external api(s).{" "}
+              We hope this beta site demonstrates the richness of comsuming data
+              from external api(s).{" "}
             </p>
             <br />
             <p>
-              TMDB api is rich in features and is comprehensive in the way it
-              exposes information about movies, tv shows, what's trending by day
-              or week ...
+              TMDB-api is rich in features and comprehensive. It exposes useful
+              information about movies, tv shows, what's trending-by-day or
+              by-week. There is simply to many speck off ...
             </p>
             <br />
             <p>Enjoy!</p>
             <br />
             <p className="has-text-centered">
               <Link to="/all/trending" className="button is-medium is-ghost">
-                See what is trending?
+                See what's trending?
               </Link>
             </p>
           </div>
