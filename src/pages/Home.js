@@ -48,7 +48,7 @@ export const Home = () => {
             <p>
               TMDB-api is rich in features and comprehensive. It exposes useful
               information about movies, tv shows, what's trending-by-day or
-              by-week. There is simply to many speck off ...
+              by-week. There is simply to many speak off ...
             </p>
             <br />
             <p>Enjoy!</p>
