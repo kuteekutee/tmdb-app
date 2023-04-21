@@ -58,63 +58,83 @@ const Navbar = () => {
         >
           <div className="navbar-start">
             <div className="navbar-item">
-              <Link to="/all/trending" className="navbar-item">
+              <Link
+                to="/all/trending"
+                className="navbar-item"
+                onClick={() => {
+                  setisActive(!isActive);
+                }}
+              >
                 Trending
               </Link>
-              <Link to="/all/movies" className="navbar-item">
+              <Link
+                to="/all/movies"
+                className="navbar-item"
+                onClick={() => {
+                  setisActive(!isActive);
+                }}
+              >
                 Movies
               </Link>
-              <Link to="/all/tv-shows" className="navbar-item">
+              <Link
+                to="/all/tv-shows"
+                className="navbar-item"
+                onClick={() => {
+                  setisActive(!isActive);
+                }}
+              >
                 TV Shows
               </Link>
+              <Link
+                to="/all/search"
+                className="navbar-item"
+                onClick={() => {
+                  setisActive(!isActive);
+                }}
+              >
+                Search
+              </Link>
             </div>
-            <Link to="/all/search" className="navbar-item">
-              Search
-            </Link>
           </div>
           <div className="navbar-end">
             {isSignedIn && (
               <div className="navbar-item">
-                <Link to="/all/favourites" className="navbar-item">
-                  Favourites
-                </Link>
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    backgroundColor: "green",
-                    color: "white",
-                    textAlign: "center",
-                    lineHeight: "25px",
-                    marginRight: "10px",
+                <Link
+                  to="/all/favourites"
+                  className="navbar-item is-mobile"
+                  onClick={() => {
+                    setisActive(!isActive);
                   }}
                 >
-                  {favouritesList ? favouritesList.length : 0}
+                  Favourites
+                  <span className="tag is-primary m-2">
+                    {favouritesList ? favouritesList.length : 0}
+                  </span>
+                </Link>
+              </div>
+            )}
+
+            {!isSignedIn ? (
+              <div className="navbar-item is-mobile">
+                <Link
+                  to="/all/sign-in"
+                  onClick={() => {
+                    setisActive(!isActive);
+                  }}
+                >
+                  Sign In
+                </Link>
+              </div>
+            ) : (
+              <div className="navbar-item is-mobile">
+                <a className="button is-ghost is-small" onClick={handleSignout}>
+                  Sign out
+                </a>
+                <div className="tag is-small is-warning m-2">
+                  Hello, {authUser}
                 </div>
               </div>
             )}
-            <div className="navbar-item">
-              {!isSignedIn ? (
-                <Link to="/all/sign-in">Sign In</Link>
-              ) : (
-                <div className="columns is-vcentered is-gapless">
-                  <div className="column">
-                    <div className="tag is-small is-warning">
-                      Hello, {authUser}
-                    </div>
-                  </div>
-                  <div className="column">
-                    <button className="button is-ghost" onClick={handleSignout}>
-                      Sign out
-                    </button>
-                  </div>
-                </div>
-                // </Link>
-              )}
-            </div>
-            {/* </div> */}
           </div>
         </div>
       </nav>

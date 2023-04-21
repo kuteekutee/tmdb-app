@@ -26,7 +26,39 @@ export const FetchMovie = ({ fav }) => {
   }, [fav]);
   return (
     <>
-      <section className="section">
+      <div className="columns is-vcentered py-4">
+        <div className="column is-narrow">
+          <div className="container">
+            <img
+              src={`${apiImage}${movieTv.poster_path}`}
+              alt={movieTv.title}
+              style={{ maxWidth: "180px" }}
+            />
+          </div>
+        </div>
+        <div className="column is-three-fifths">
+          <div className="content is-5">
+            <h1 className="title">{movieTv.title}</h1>
+            <p>{movieTv.overview}</p>
+          </div>
+        </div>
+        <div className="column is-one-fifth">
+          <div class="block">
+            <span class="tag is-danger">
+              Remove
+              <button
+                class="delete is-small"
+                onClick={() => removeFromFavourites(movieTv)}
+              ></button>
+            </span>
+          </div>
+          {/* <button
+            className="delete is-primary is-medium"
+            onClick={() => removeFromFavourites(movieTv)}
+          ></button> */}
+        </div>
+      </div>
+      {/* <section className="section">
         <article className="media">
           <figure className="media-left">
             <p className="image is-128x128 ml-6">
@@ -49,7 +81,7 @@ export const FetchMovie = ({ fav }) => {
             ></button>
           </div>
         </article>
-      </section>
+      </section> */}
     </>
   );
 };

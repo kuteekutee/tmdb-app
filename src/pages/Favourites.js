@@ -10,8 +10,9 @@ export const Favourites = () => {
 
   return (
     <>
-      <p className="title ml-6">Favourites</p>
-      <div className="container is-paddingless is-marginless">
+      <div className="section p-2">
+        <div className="tag is-medium has-text-weight-bold">Favourites</div>
+
         {favouritesList.map((item) => (
           <FetchMovie fav={item} key={item.id} />
         ))}
