@@ -1,33 +1,51 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+
+const initState = {
+  id: 0,
+  posterImage: "",
+  mediaType: "",
+};
 export const Home = () => {
-  const listItems = [
-    "/vkLzXddgUKH5VcpnYiRzpJFrZhz.jpg",
-    "7TCwgX7oQKxcWYEhSPRmaHe6ULN.jpg",
-    "/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg",
-    "/3GrRgt6CiLIUXUtoktcv1g2iwT5.jpg",
-    "/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg",
-    "/5ik4ATKmNtmJU6AYD0bLm56BCVM.jpg",
-    "/cvsXj3I9Q2iyyIo95AecSd1tad7.jpg",
-    "/evu5aDitRLTPhVc9d0imll4kfti.jpg",
-    "/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg",
-    "/7HW47XbkNQ5fiwQFYGWdw9gs144.jpg",
-    "/cOaQU5o7mznZTFb4Xs9c1QlwTze.jpg",
-    "/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg",
-    "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
-    "/ptMxe9xl7RZcQQR2NwwoaOyVgdZ.jpg",
-    "/9yMQxHIQERFxNPnbbhxOO8nqVdq.jpg",
-    "/rFp74PFpz14AHrtlVPrLyrSng47.jpg",
-    "/cxSKca4dNlk7O7PMiEYT203vlIw.jpg",
-  ];
-  const item = listItems[Math.floor(Math.random() * listItems.length)];
-  const image = "https://image.tmdb.org/t/p/w500/" + item;
+  const [randomPick, setRandomPick] = useState(initState);
+  useEffect(() => {
+    let api = `${process.env.REACT_APP_API_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
+    const getApi = async () => {
+      try {
+        const response = await axios.get(api);
+
+        console.log("Get STATUS: ", response.status);
+        const results = response.data.results;
+        const data = results.filter((item) => !(item.poster_path === null));
+        // console.log(JSON.stringify(filteredData));
+        const randomData = data[Math.floor(Math.random() * data.length)];
+        const posterPath =
+          process.env.REACT_APP_API_IMAGEURL + randomData.poster_path;
+        const mediaType = randomData.title ? "movie" : "tv";
+        setRandomPick({
+          id: randomData.id,
+          posterImage: posterPath,
+          mediaType: mediaType,
+        });
+      } catch (error) {
+        console.log("Data error", error);
+      }
+    };
+    getApi();
+  }, []);
+
   return (
     <>
       <div className="container is-fullheight has-text-centered">
         <div className="columns is-vcentered is-centered">
-          <div className="column">
+          <div className="column m-2 is-one-third">
             <figure className="image">
-              <img src={image} alt="Description" />
+              <img
+                src={randomPick.posterImage}
+                alt="Description"
+                maxWidth="40%"
+              />
             </figure>
           </div>
           <div className="column mx-4">
