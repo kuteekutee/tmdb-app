@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/tmdb-app/static/css/main.badb63d0.css",
+    "main.js": "/tmdb-app/static/js/main.ee2bc6dc.js",
+    "static/media/logo.jpg": "/tmdb-app/static/media/logo.f12961fcbe5f9bd1f153.jpg",
+    "index.html": "/tmdb-app/index.html",
+    "main.badb63d0.css.map": "/tmdb-app/static/css/main.badb63d0.css.map",
+    "main.ee2bc6dc.js.map": "/tmdb-app/static/js/main.ee2bc6dc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.badb63d0.css",
+    "static/js/main.ee2bc6dc.js"
+  ]
+}
