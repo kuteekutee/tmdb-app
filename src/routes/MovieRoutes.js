@@ -25,6 +25,7 @@ export const MovieRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/tmdb-app" element={<Home />} />
         <Route path="/all" element={<Dashboard />}>
           <Route path="trending" element={<Dashboard />}>
             <Route index element={<Trending />} />
